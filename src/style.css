@@ -1,5 +1,77 @@
-button{
-    background-color: black;
-    color: aliceblue;
-    padding: 5px 10px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.weather-warpper {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.weather {
+    padding: 20px;
+    border: 1px solid #dadde1;
+    border-radius: 5px;
+
+}
+
+h1 {
+    color: #878787;
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 28px;
+    margin-bottom: 0;
+}
+
+ul {
+    padding: 0%;
+    margin: 0%;
+}
+
+li {
+    list-style: none;
+    margin: 0%;
+    padding: 0;
+    color: rgb(135, 135, 135);
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19px;
+}
+
+.cityInfo {
+    margin-bottom: 20px;
+}
+
+
+
+.weatherTemprature {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.weatherTemprature img {
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 64px;
+    width: 64px;
+
+
+}
+
+.weatherTemprature strong {
+    color: rgb(35, 35, 35);
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 2;
+}
+
+.weatherTemprature .units {
+    position: relative;
+    font-size: 16px;
+    top: -32px;
+}
+
+a{
+    text-decoration: none;
 }
