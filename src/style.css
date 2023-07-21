@@ -81,3 +81,17 @@ a{
     color: #3b58e6;
 
 }
+#formContorol{
+width: 250px;
+outline: none;
+border:1px currentColor rgb(135, 135, 135, 0.61);
+border-radius: 10px;
+padding: 4px 10px;
+}
+#submit{
+background-color: #3b58e6;
+color: #dadde1;
+border: none;
+border-radius: 10px;
+padding: 6px 12px;
+}

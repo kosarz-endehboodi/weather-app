@@ -15,6 +15,21 @@
     <div class="container">
       <div class="weather-warpper">
         <div class="weather">
+          <form  class="mb-4" id="searchForm" action="">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  id="formContorol"
+                  type="search"
+                  placeholder="type a city..."
+                />
+              </div>
+              <div class="col-3">
+                <input  id="submit" type="submit" value="search" />
+              </div>
+            </div>
+          </form>
+
           <div class="cityInfo">
             <h1 id="cityName"></h1>
             <ul>
@@ -25,9 +40,14 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <div class="clearFix  weatherTemprature">
+              <div class="clearFix weatherTemprature">
                 <img id="icon" class="floatLeft" src="" alt="" />
-                <div class="floatLeft"><strong id="temperature"></strong><small class="units">° <a href="">C</a> |<a href="">F</a></small> </div>
+                <div class="floatLeft">
+                  <strong id="temperature"></strong
+                  ><small class="units"
+                    >° <a href="">C</a> |<a href="">F</a></small
+                  >
+                </div>
               </div>
             </div>
 
