@@ -38,9 +38,11 @@ li {
     font-weight: 100;
     line-height: 19px;
 }
-li::first-letter{
+
+li::first-letter {
     text-transform: capitalize;
 }
+
 .cityInfo {
     margin-bottom: 20px;
 }
@@ -74,24 +76,35 @@ li::first-letter{
     position: relative;
     font-size: 16px;
     top: -32px;
+
 }
 
-a{
+a {
     text-decoration: none;
     color: #3b58e6;
+}
 
+#formContorol {
+    width: 250px;
+    outline: none;
+    border: 1px currentColor rgb(135, 135, 135, 0.61);
+    border-radius: 10px;
+    padding: 4px 10px;
 }
-#formContorol{
-width: 250px;
-outline: none;
-border:1px currentColor rgb(135, 135, 135, 0.61);
-border-radius: 10px;
-padding: 4px 10px;
+
+#submit {
+    background-color: #3b58e6;
+    color: #dadde1;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 12px;
 }
-#submit{
-background-color: #3b58e6;
-color: #dadde1;
-border: none;
-border-radius: 10px;
-padding: 6px 12px;
+
+.weatherTemprature .active {
+    color: rgb(33, 33, 33);
+    cursor: default;
+}
+
+.weatherTemprature .active:hover {
+    text-decoration: none;
 }

@@ -11,8 +11,15 @@ let iconEl = document.getElementById("icon");
 //console.log(apiUrl);
 //city form
 let cityFormEl = document.getElementById("searchForm");
+//fahrenhit
+let celsiusTemperature = null;
+let fahrenhit = document.getElementById("Fahrenhit");
+let celsius = document.getElementById("celsius");
 
+//event
 cityFormEl.addEventListener("submit", searchCity);
+fahrenhit.addEventListener("click", showFahrenhitTemp);
+celsius.addEventListener("click", showCelsiusTemp);
 
 function FormDate(timestamp) {
   //calculate the date
@@ -33,7 +40,7 @@ function FormDate(timestamp) {
 
 function displayTempCity(response) {
   // console.log(response.data);
-
+  celsiusTemperature = Math.round(response.data.main.temp);
   windEl.innerText = response.data.wind.speed;
   humidityEl.innerText = response.data.main.humidity;
   descriptionEl.innerText = response.data.weather[0].description;
@@ -56,11 +63,28 @@ function search(city) {
   axios.get(apiUrl).then(displayTempCity);
 }
 search("new york");
-
+//run when submit form
 function searchCity(e) {
   e.preventDefault();
   let formContorol = document.getElementById("formContorol");
   let cityvalue = formContorol.value;
   search(cityvalue);
   // console.log(cityvalue);
+}
+
+//fahrenhit
+function showFahrenhitTemp(e) {
+  e.preventDefault();
+  //remove active celsius
+  celsius.classList.remove("active");
+  fahrenhit.classList.add("active");
+  let fahrenhittemp = (celsiusTemperature * 9) / 5 + 32;
+  temperatureEl.innerText = Math.round(fahrenhittemp);
+}
+
+function showCelsiusTemp(e) {
+  e.preventDefault();
+  fahrenhit.classList.remove("active");
+  celsius.classList.add("active");
+  temperatureEl.innerText = celsiusTemperature;
 }
