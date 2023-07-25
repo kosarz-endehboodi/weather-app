@@ -8,6 +8,7 @@ let humidityEl = document.getElementById("humidity");
 let windEl = document.getElementById("wind");
 let dateEl = document.getElementById("date");
 let iconEl = document.getElementById("icon");
+let precipitation = document.getElementById("precipitation");
 //console.log(apiUrl);
 //city form
 let cityFormEl = document.getElementById("searchForm");
@@ -39,7 +40,6 @@ function FormDate(timestamp) {
 }
 
 function displayTempCity(response) {
-  // console.log(response.data);
   celsiusTemperature = Math.round(response.data.main.temp);
   windEl.innerText = response.data.wind.speed;
   humidityEl.innerText = response.data.main.humidity;
@@ -94,7 +94,8 @@ function showCelsiusTemp(e) {
 
 //forcast
 function forcast(response) {
-  //console.log(response.data.daily);
+  // console.log(response.data.daily);
+  precipitation.innerText = response.data.minutely[0].precipitation;
   let forcast = response.data.daily;
   let forcastEl = document.getElementById("weatherForcast");
   //let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri"];

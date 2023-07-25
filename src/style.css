@@ -57,6 +57,10 @@ li::first-letter {
 
 
 
+#infotemp{
+ padding-left: 40px;
+    padding-top:40px;
+}
 .weatherTemprature {
 
     display: flex;
