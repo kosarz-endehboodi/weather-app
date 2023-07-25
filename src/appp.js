@@ -47,12 +47,14 @@ function displayTempCity(response) {
   cityEl.innerText = response.data.name;
   temperatureEl.innerText = Math.round(response.data.main.temp);
   dateEl.innerText = FormDate(response.data.dt * 1000);
-  console.log(FormDate(response.data.dt * 1000));
+  // console.log(FormDate(response.data.dt * 1000));
   let iconIdpng = response.data.weather[0].icon;
   iconEl.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${iconIdpng}@2x.png`
   );
+
+  getForcast(response.data.coord);
 }
 
 // function api key and url
@@ -69,6 +71,7 @@ function searchCity(e) {
   let formContorol = document.getElementById("formContorol");
   let cityvalue = formContorol.value;
   search(cityvalue);
+
   // console.log(cityvalue);
 }
 
@@ -87,4 +90,49 @@ function showCelsiusTemp(e) {
   fahrenhit.classList.remove("active");
   celsius.classList.add("active");
   temperatureEl.innerText = celsiusTemperature;
+}
+
+//forcast
+function forcast(response) {
+  //console.log(response.data.daily);
+  let forcast = response.data.daily;
+  let forcastEl = document.getElementById("weatherForcast");
+  //let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri"];
+  let forcasthtml = "";
+
+  forcast.forEach(function (forcastday, i = 1) {
+    if (i < 6) {
+      forcasthtml += ` 
+  <div class="col-2">
+    <div class="weatherForcastDate">${formatDayForcast(forcastday.dt)}</div>
+    <img id="forcastImg" src="https://openweathermap.org/img/wn/${
+      forcastday.weather[0].icon
+    }@2x.png" alt="" />
+    <div class="weatherForcastTemp">
+      <span id="maxTemp">
+      ${Math.round(
+        forcastday.temp.max
+      )}°/</span> <span id="minTemp"> ${Math.round(forcastday.temp.min)}°</span>
+    </div>
+  </div>
+`;
+    }
+  });
+
+  forcastEl.innerHTML = forcasthtml;
+  // forcastEl.appendChild
+}
+
+function getForcast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(forcast);
+}
+
+function formatDayForcast(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  return days[day];
 }
